@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple ChatBot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+
+</head>
+<body>
+    <h1>ChatBot</h1>
+    <form action="/" method="post">
+        <label for="message">Query:</label>
+        <input type="text" class = 'text' name = 'query'><br><br>
+        <input type="submit" value="Submit">
+    </form>
+    {% if session.name %}
+    <a href="/logout">logout</a>.
+   {% else %}
+      You are not Register. <a href="/login">login</a>.
+   {% endif %}
+
+    {% if message| length == 0 %}
+        <p></p>
+    {% else %}
+    <div class="answer">
+        <span>{{ message|safe }}</span>
+    </div>
+    {% endif %}
+    
+</body>
+
+</html>
